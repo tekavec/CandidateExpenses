@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Web.Mvc;
 using CandidateExpenses.Models;
+using CandidateExpenses.Services;
 
 namespace CandidateExpenses.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IExpenseCalculator _expenseCalculator;
+
+        public HomeController(IExpenseCalculator expenseCalculator)
+        {
+            _expenseCalculator = expenseCalculator;
+        }
+
         public ActionResult Index()
         {
             var model = new InputModel();

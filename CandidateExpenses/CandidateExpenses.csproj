@@ -207,6 +207,9 @@
     </Compile>
     <Compile Include="Infrastructure\CastleControllerFactory.cs" />
     <Compile Include="Installers\ControllersInstaller.cs" />
+    <Compile Include="Installers\ExpenseCalculatorInstaller.cs" />
+    <Compile Include="Services\IExpenseCalculator.cs" />
+    <Compile Include="Services\MaximizeRateExpenseCalculator.cs" />
     <Compile Include="Models\InputModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
