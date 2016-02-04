@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using CandidateExpenses.Models;
 
 namespace CandidateExpenses.Controllers
 {
@@ -10,8 +8,23 @@ namespace CandidateExpenses.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var model = new InputModel();
+            return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Index(InputModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Index", model);
+            }
+            return RedirectToAction("Result");
+        }
+
+        public ActionResult Result(InputModel model)
+        {
+            return View();
+        }
     }
 }
