@@ -2,6 +2,7 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 using CandidateExpenses.Infrastructure;
+using CandidateExpenses.Installers;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 

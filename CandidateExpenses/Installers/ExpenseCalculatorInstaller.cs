@@ -12,11 +12,10 @@ namespace CandidateExpenses.Installers
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            container.Register(
-            Component
-                .For<IExpenseCalculator>()
-                .ImplementedBy<MaximizeRateExpenseCalculator>()
-                .LifestyleTransient());
+            container.Register(Classes.FromThisAssembly()
+                .Where(type => type.Name.EndsWith("ExpenseCalculator"))
+                .WithServiceDefaultInterfaces()
+                .Configure(c => c.LifestyleTransient()));
         }
     }
 }

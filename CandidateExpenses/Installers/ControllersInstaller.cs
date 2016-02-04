@@ -5,7 +5,7 @@ using Castle.Windsor;
 
 namespace CandidateExpenses.Installers
 {
-    public class ControllersInstaller
+    public class ControllersInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

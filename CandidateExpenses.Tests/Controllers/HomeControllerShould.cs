@@ -45,7 +45,7 @@ namespace CandidateExpenses.Tests.Controllers
         {
             HomeController controller = new HomeController(_expenseCalculator);
             var model = new InputModel { Amount = new Random().Next(123456789) / 100m };
-            var expenseStructure = new ExpenseStructure();
+            var expenseStructure = new ExpenseStructure(new Random().Next(99), new Random().Next(99));
             _expenseCalculator.Calculate(model.Amount).Returns(expenseStructure);
 
             controller.WithCallTo(a => a.Result(model)).ShouldRenderView("Result").WithModel<ExpenseStructure>(expenseStructure);
