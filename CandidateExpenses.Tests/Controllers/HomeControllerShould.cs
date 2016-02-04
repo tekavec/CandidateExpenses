@@ -36,6 +36,12 @@ namespace CandidateExpenses.Tests.Controllers
             controller.WithCallTo(a => a.Index(model)).ShouldRenderView("Index").WithModel(model);
         }
 
+        [Test]
+        public void render_a_result_view()
+        {
+            HomeController controller = new HomeController();
 
+            controller.WithCallTo(a => a.Index()).ShouldRenderDefaultView();
+        }
     }
 }
