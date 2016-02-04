@@ -1,7 +1,32 @@
 ﻿@model CandidateExpenses.Models.ExpenseStructure
 @{
-    ViewBag.Title = "ExpenseStructure";
+    ViewBag.Title = "Expense Structure";
 }
 
-<h2>ExpenseStructure</h2>
+<div class="jumbotron">
+    <h1>Result - Expense Structure</h1>
+    <p class="lead">This calculator implementation tries to use whole numbers for units; the next criteria is to maximize rate value.</p>
+</div>
 
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h2>
+            Result for input value @Html.DisplayFor(m => m.InputValue)
+        </h2>
+        <br />
+        <h4>
+            @Html.LabelFor(m => m.WorkingUnits)
+            <br />
+            @Html.DisplayFor(m => m.WorkingUnits)
+        </h4>
+        <h4>
+            @Html.LabelFor(m => m.Rate)
+            <br />
+            @Html.DisplayFor(m => m.Rate)
+        </h4>
+        <hr />
+        <p>
+            <a href="/" class="btn btn-primary btn-lg">New calculation</a>
+        </p>
+    </div>
+</div>

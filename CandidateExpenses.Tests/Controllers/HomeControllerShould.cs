@@ -11,7 +11,7 @@ namespace CandidateExpenses.Tests.Controllers
     [TestFixture]
     public class HomeControllerShould
     {
-        private IExpenseCalculator _expenseCalculator = Substitute.For<IExpenseCalculator>();
+        private readonly IExpenseCalculator _expenseCalculator = Substitute.For<IExpenseCalculator>();
         [Test]
         public void render_a_default_view()
         {
@@ -27,13 +27,13 @@ namespace CandidateExpenses.Tests.Controllers
             var model = new InputModel();
             HomeController controller = new HomeController(_expenseCalculator);
 
-            controller.WithCallTo(a => a.Index(model)).ShouldRedirectTo<InputModel>(a => a.Result);
+            controller.WithCallTo(a => a.Index(model)).ShouldRedirectTo<decimal>(a => a.Result);
         }
 
         [Test]
         public void return_a_default_view_with_input_data_on_invalid_data()
         {
-            var model = new InputModel { Amount = new Random().Next(123456789)/100m };
+            var model = new InputModel { InputValue = new Random().Next(123456789)/100m };
             HomeController controller = new HomeController(_expenseCalculator);
             controller.ModelState.AddModelError("key", "error message");
 
@@ -44,11 +44,11 @@ namespace CandidateExpenses.Tests.Controllers
         public void render_a_result_view()
         {
             HomeController controller = new HomeController(_expenseCalculator);
-            var model = new InputModel { Amount = new Random().Next(123456789) / 100m };
-            var expenseStructure = new ExpenseStructure(new Random().Next(99), new Random().Next(99));
-            _expenseCalculator.Calculate(model.Amount).Returns(expenseStructure);
+            var model = new InputModel { InputValue = new Random().Next(123456789) / 100m };
+            var expenseStructure = new ExpenseStructure(new Random().Next(99), new Random().Next(99), model.InputValue);
+            _expenseCalculator.Calculate(model.InputValue).Returns(expenseStructure);
 
-            controller.WithCallTo(a => a.Result(model)).ShouldRenderView("Result").WithModel<ExpenseStructure>(expenseStructure);
+            controller.WithCallTo(a => a.Result(model.InputValue)).ShouldRenderView("Result").WithModel(expenseStructure);
         }
     }
 }

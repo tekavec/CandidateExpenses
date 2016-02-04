@@ -27,13 +27,12 @@ namespace CandidateExpenses.Controllers
             {
                 return View("Index", model);
             }
-            return RedirectToAction("Result");
+            return RedirectToAction("Result", new {inputValue = model.InputValue});
         }
 
-        public ActionResult Result(InputModel model)
+        public ActionResult Result(decimal inputValue)
         {
-            var expenseStructure = _expenseCalculator.Calculate(model.Amount);
-
+            var expenseStructure = _expenseCalculator.Calculate(inputValue);
             return View(expenseStructure);
         }
     }

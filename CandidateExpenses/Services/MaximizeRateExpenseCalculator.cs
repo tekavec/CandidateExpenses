@@ -5,6 +5,7 @@ namespace CandidateExpenses.Services
 {
     public class MaximizeRateExpenseCalculator : IExpenseCalculator
     {
+        //There are several possible implementations of calculation. This one maximize the rate value.
         private const decimal MaximumUnits = 99.99m;
 
         public ExpenseStructure Calculate(decimal inputValue)
@@ -19,7 +20,7 @@ namespace CandidateExpenses.Services
                 var rate = Math.Round(inputValue / (units / divisor), 2);
                 if (rate <= MaximumUnits && Math.Round((units / divisor) * rate, 2) == inputValue)
                 {
-                    return new ExpenseStructure(units / divisor, rate);
+                    return new ExpenseStructure(units / divisor, rate, inputValue);
                 }
             }
             return null;
