@@ -208,6 +208,7 @@
     <Compile Include="Infrastructure\CastleControllerFactory.cs" />
     <Compile Include="Installers\ControllersInstaller.cs" />
     <Compile Include="Installers\ExpenseCalculatorInstaller.cs" />
+    <Compile Include="Models\ExpenseStructure.cs" />
     <Compile Include="Services\IExpenseCalculator.cs" />
     <Compile Include="Services\MaximizeRateExpenseCalculator.cs" />
     <Compile Include="Models\InputModel.cs" />

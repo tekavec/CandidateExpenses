@@ -32,7 +32,9 @@ namespace CandidateExpenses.Controllers
 
         public ActionResult Result(InputModel model)
         {
-            return View();
+            var expenseStructure = _expenseCalculator.Calculate(model.Amount);
+
+            return View(expenseStructure);
         }
     }
 }
